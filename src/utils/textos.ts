@@ -10,7 +10,6 @@ export const textos = {
   },
   navegacion: {
     inicio: 'Inicio',
-    stack: 'Stack',
     experiencia: 'Experiencia',
     proyectos: 'Proyectos',
     educacion: 'Educación',
@@ -61,9 +60,6 @@ export const textos = {
           'Desarrollo fullstack con JSF, Spring y Oracle SQL para aseguradora automotriz. Portal administrativo con React, Bootstrap y Firebase. Inicio de carrera profesional.',
       },
     ],
-  },
-  stack: {
-    titulo: 'Tech Stack',
   },
   proyectos: {
     titulo: 'Proyectos',
