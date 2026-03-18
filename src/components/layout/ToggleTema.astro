@@ -1,14 +1,20 @@
 ---
-const TEMAS = ['Light', 'Dark', 'System'];
+import { textos } from '@/utils/textos';
+
+const opciones = [
+  { etiqueta: textos.tema.claro, valor: 'light' },
+  { etiqueta: textos.tema.oscuro, valor: 'dark' },
+  { etiqueta: textos.tema.sistema, valor: 'system' },
+];
 ---
 
 <div class="relative ml-1 mr-1">
   <button
     id="boton-tema"
     class="appearance-none border-none flex hover:scale-125 transition"
-    aria-label="Cambiar tema"
+    aria-label={textos.tema.eligeTema}
   >
-    <span class="sr-only">Elige el tema</span>
+    <span class="sr-only">{textos.tema.eligeTema}</span>
     <!-- Sol (light) -->
     <svg id="icono-light" class="icono-tema size-5 transition-all" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -31,12 +37,12 @@ const TEMAS = ['Light', 'Dark', 'System'];
   </button>
   <div
     id="menu-temas"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-[var(--color-highlight-med)] bg-[var(--color-surface)] shadow-[0_3px_10px_rgba(0,0,0,0.3)] backdrop-blur-md"
+    class="absolute hidden top-full right-0 mt-3 text-sm p-1 min-w-[8rem] rounded-md border border-[var(--color-highlight-med)] bg-[var(--color-surface)] shadow-[0_3px_10px_rgba(0,0,0,0.3)] backdrop-blur-md"
   >
     <ul>
-      {TEMAS.map((tema) => (
-        <li class="opcion-tema px-2 py-1.5 cursor-default rounded-sm hover:bg-[var(--color-overlay)]">
-          {tema}
+      {opciones.map((opcion) => (
+        <li class="opcion-tema px-2 py-1.5 cursor-default rounded-sm hover:bg-[var(--color-overlay)]" data-valor={opcion.valor}>
+          {opcion.etiqueta}
         </li>
       ))}
     </ul>
@@ -102,9 +108,9 @@ const TEMAS = ['Light', 'Dark', 'System'];
   });
 
   document.querySelectorAll<HTMLLIElement>('.opcion-tema').forEach((el) => {
-    el.addEventListener('click', (e) => {
-      const texto = (e.target as HTMLElement).innerText.toLowerCase().trim() as PreferenciaTema;
-      localStorage.setItem(CLAVE, texto);
+    el.addEventListener('click', () => {
+      const valor = el.dataset.valor as PreferenciaTema;
+      localStorage.setItem(CLAVE, valor);
       actualizarTema();
     });
   });

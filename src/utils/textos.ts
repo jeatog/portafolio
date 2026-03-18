@@ -15,6 +15,12 @@ export const textos = {
     educacion: 'Educación',
     contacto: 'Contáctame',
   },
+  tema: {
+    eligeTema: 'Elige el tema',
+    claro: 'Claro',
+    oscuro: 'Oscuro',
+    sistema: 'Sistema',
+  },
   hero: {
     nombre: 'Jesús A. Toledo',
     rol: 'Desarrollador de Software',
