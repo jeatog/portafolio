@@ -112,4 +112,20 @@
     background-color: var(--color-highlight-med);
     color: var(--color-text);
   }
+
+  .fondo-gradiente {
+    background: radial-gradient(
+      ellipse 80% 80% at 50% -20%,
+      rgba(196, 167, 231, 0.25),
+      transparent
+    );
+  }
+
+  .light .fondo-gradiente {
+    background: radial-gradient(
+      ellipse 80% 80% at 50% -20%,
+      rgba(144, 122, 169, 0.4),
+      transparent
+    );
+  }
 }
