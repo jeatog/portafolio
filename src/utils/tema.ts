@@ -1,5 +1,7 @@
 /**
  * Utilidades de tema - localStorage + prefers-color-scheme
+ * Dark (Rose Pine Moon) es el tema por defecto.
+ * Light (Rose Pine Dawn) se activa con la clase .light en <html>.
  */
 
 type Tema = 'light' | 'dark';
@@ -12,10 +14,10 @@ export function obtenerPreferenciaTema(): Tema {
     const guardado = localStorage.getItem(CLAVE_STORAGE);
     if (guardado === 'light' || guardado === 'dark') return guardado;
   }
-  if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
+  if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    return 'light';
   }
-  return 'light';
+  return 'dark';
 }
 
 /** Guarda la preferencia de tema y la aplica */
@@ -29,5 +31,5 @@ export function guardarPreferenciaTema(tema: Tema): void {
 /** Aplica el tema al documento */
 export function aplicarTema(tema: Tema): void {
   const raiz = document.documentElement;
-  raiz.classList.toggle('dark', tema === 'dark');
+  raiz.classList.toggle('light', tema === 'light');
 }

@@ -1,7 +1,70 @@
 @import 'tailwindcss';
 
+/* --------------------------------------------------------
+   Elegí la paleta del tema Rose Pine porque me gusta mucho y lo uso en todo.
+   Rose Pine Moon (oscuro - tema por defecto)
+   Rose Pine Dawn (claro - activado con clase .light)
+   https://rosepinetheme.com/palette/ingredients/
+   -------------------------------------------------------- */
+
+:root {
+  color-scheme: dark;
+
+  --color-base: #232136;
+  --color-surface: #2a273f;
+  --color-overlay: #393552;
+  --color-muted: #6e6a86;
+  --color-subtle: #908caa;
+  --color-text: #e0def4;
+  --color-love: #eb6f92;
+  --color-gold: #f6c177;
+  --color-rose: #ea9a97;
+  --color-pine: #3e8fb0;
+  --color-foam: #9ccfd8;
+  --color-iris: #c4a7e7;
+  --color-highlight-low: #2a283e;
+  --color-highlight-med: #44415a;
+  --color-highlight-high: #56526e;
+}
+
+.light {
+  color-scheme: light;
+
+  --color-base: #faf4ed;
+  --color-surface: #fffaf3;
+  --color-overlay: #f2e9e1;
+  --color-muted: #9893a5;
+  --color-subtle: #797593;
+  --color-text: #575279;
+  --color-love: #b4637a;
+  --color-gold: #ea9d34;
+  --color-rose: #d7827e;
+  --color-pine: #286983;
+  --color-foam: #56949f;
+  --color-iris: #907aa9;
+  --color-highlight-low: #f4ede8;
+  --color-highlight-med: #dfdad9;
+  --color-highlight-high: #cecacd;
+}
+
 @theme {
   --font-sans: 'Nunito Variable', system-ui, sans-serif;
+
+  --color-base: var(--color-base);
+  --color-surface: var(--color-surface);
+  --color-overlay: var(--color-overlay);
+  --color-muted: var(--color-muted);
+  --color-subtle: var(--color-subtle);
+  --color-text: var(--color-text);
+  --color-love: var(--color-love);
+  --color-gold: var(--color-gold);
+  --color-rose: var(--color-rose);
+  --color-pine: var(--color-pine);
+  --color-foam: var(--color-foam);
+  --color-iris: var(--color-iris);
+  --color-highlight-low: var(--color-highlight-low);
+  --color-highlight-med: var(--color-highlight-med);
+  --color-highlight-high: var(--color-highlight-high);
 }
 
 @layer base {
@@ -12,7 +75,41 @@
 
   body {
     min-height: 100dvh;
+    background-color: var(--color-base);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--color-foam);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-iris);
+  }
+
+  ::selection {
+    background-color: var(--color-highlight-med);
+    color: var(--color-text);
   }
 }
