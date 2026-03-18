@@ -10,10 +10,10 @@ const elementosNav = [
 ];
 ---
 
-<nav class="flex px-3 text-sm font-medium rounded-full text-[var(--color-subtle)] justify-center items-center">
+<nav class="flex px-2 sm:px-3 text-xs sm:text-sm font-medium rounded-full text-[var(--color-subtle)] justify-center items-center">
   {elementosNav.map((enlace) => (
     <a
-      class="relative block px-2 py-2 transition hover:text-[var(--color-gold)]"
+      class="relative block px-1.5 py-2 sm:px-2 transition hover:text-[var(--color-gold)]"
       aria-label={enlace.etiqueta}
       href={enlace.url}
     >
