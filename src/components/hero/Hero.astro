@@ -2,8 +2,14 @@
 import { textos } from '@/utils/textos';
 ---
 
-<section id="hero" class="flex flex-col items-center justify-center px-4 py-24 md:py-36 text-center">
-  <div class="max-w-2xl space-y-6">
+<section id="hero" class="relative flex flex-col items-center justify-center px-4 py-24 md:py-36 text-center overflow-hidden">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80%] aspect-[709/1391] opacity-[0.15] blur-sm"
+  >
+    <div class="logo-hero h-full w-full"></div>
+  </div>
+  <div class="relative max-w-2xl space-y-6">
     <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
       {textos.hero.nombre}
     </h1>
