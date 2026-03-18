@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { textos } from '@/utils/textos';
+---
+
+<BaseLayout titulo={textos.error404.titulo} descripcion={textos.error404.descripcion}>
+  <main>
+    <section>
+      <h1>404</h1>
+      <p>{textos.error404.mensaje}</p>
+      <a href="/">{textos.error404.volverInicio}</a>
+    </section>
+  </main>
+</BaseLayout>

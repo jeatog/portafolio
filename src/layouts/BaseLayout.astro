@@ -1,0 +1,50 @@
+---
+interface Props {
+  titulo: string;
+  descripcion: string;
+  ogImagen?: string;
+  ogTipo?: string;
+  urlCanonica?: string;
+}
+
+const {
+  titulo,
+  descripcion,
+  ogImagen = '/og-default.png',
+  ogTipo = 'website',
+  urlCanonica,
+} = Astro.props;
+
+const canonica = urlCanonica || Astro.url.href;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonica} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogTipo} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:image" content={new URL(ogImagen, Astro.site)} />
+    <meta property="og:url" content={canonica} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={titulo} />
+    <meta name="twitter:description" content={descripcion} />
+    <meta name="twitter:image" content={new URL(ogImagen, Astro.site)} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
