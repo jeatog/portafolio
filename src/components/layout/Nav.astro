@@ -1,11 +1,45 @@
 ---
 import { textos } from '@/utils/textos';
+import ToggleTema from './ToggleTema.astro';
+
+const elementosNav = [
+  { titulo: textos.navegacion.experiencia, etiqueta: 'experiencia', url: '#experiencia' },
+  { titulo: textos.navegacion.proyectos, etiqueta: 'proyectos', url: '#proyectos' },
+  { titulo: textos.navegacion.educacion, etiqueta: 'educacion', url: '#educacion' },
+  { titulo: textos.navegacion.contacto, etiqueta: 'contacto', url: `mailto:${textos.sociales.correo}` },
+];
 ---
 
-<nav>
-  <a href="#hero">{textos.navegacion.inicio}</a>
-  <a href="#experiencia">{textos.navegacion.experiencia}</a>
-  <a href="#proyectos">{textos.navegacion.proyectos}</a>
-  <a href="#educacion">{textos.navegacion.educacion}</a>
-  <a href={`mailto:${textos.sociales.correo}`}>{textos.navegacion.contacto}</a>
+<nav class="flex px-3 text-sm font-medium rounded-full text-[var(--color-subtle)] justify-center items-center">
+  {elementosNav.map((enlace) => (
+    <a
+      class="relative block px-2 py-2 transition hover:text-[var(--color-gold)]"
+      aria-label={enlace.etiqueta}
+      href={enlace.url}
+    >
+      {enlace.titulo}
+    </a>
+  ))}
+  <ToggleTema />
 </nav>
+
+<style>
+  nav {
+    animation: nav-fondo 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+    background-color: var(--color-base);
+  }
+
+  @keyframes nav-fondo {
+    0% {
+      background-color: transparent;
+    }
+    to {
+      background-color: var(--color-surface);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--color-highlight-med);
+    }
+  }
+</style>

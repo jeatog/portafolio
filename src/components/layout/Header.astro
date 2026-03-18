@@ -1,13 +1,35 @@
 ---
-import { textos } from '@/utils/textos';
+import Nav from './Nav.astro';
 ---
 
-<header>
-  <nav>
-    <a href="#hero">{textos.navegacion.inicio}</a>
-    <a href="#experiencia">{textos.navegacion.experiencia}</a>
-    <a href="#proyectos">{textos.navegacion.proyectos}</a>
-    <a href="#educacion">{textos.navegacion.educacion}</a>
-    <a href={`mailto:${textos.sociales.correo}`}>{textos.navegacion.contacto}</a>
-  </nav>
+<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
+  <Nav />
 </header>
+
+<script>
+  const secciones = document.querySelectorAll('section');
+  const elementosNav = document.querySelectorAll('header nav a');
+
+  const callback = (entradas: IntersectionObserverEntry[]) => {
+    entradas.forEach((entrada) => {
+      if (entrada.isIntersecting) {
+        elementosNav.forEach((el) => {
+          const esActivo = el.getAttribute('aria-label') === entrada.target.id;
+          (el as HTMLElement).style.color = esActivo
+            ? 'var(--color-gold)'
+            : '';
+        });
+      }
+    });
+  };
+
+  const observador = new IntersectionObserver(callback, {
+    root: null,
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0,
+  });
+
+  secciones.forEach((seccion) => {
+    observador.observe(seccion);
+  });
+</script>

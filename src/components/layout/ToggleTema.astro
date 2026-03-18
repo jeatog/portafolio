@@ -1,0 +1,111 @@
+---
+const TEMAS = ['Light', 'Dark', 'System'];
+---
+
+<div class="relative ml-1 mr-1">
+  <button
+    id="boton-tema"
+    class="appearance-none border-none flex hover:scale-125 transition"
+    aria-label="Cambiar tema"
+  >
+    <span class="sr-only">Elige el tema</span>
+    <!-- Sol (light) -->
+    <svg id="icono-light" class="icono-tema size-5 transition-all" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/>
+      <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/>
+    </svg>
+    <!-- Luna (dark) -->
+    <svg id="icono-dark" class="icono-tema absolute size-5 transition-all" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/>
+    </svg>
+    <!-- Monitor (system) -->
+    <svg id="icono-system" class="icono-tema absolute size-5 transition-all" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10z"/>
+      <path d="M7 20h10"/>
+      <path d="M9 16v4"/>
+      <path d="M15 16v4"/>
+    </svg>
+  </button>
+  <div
+    id="menu-temas"
+    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-[var(--color-highlight-med)] bg-[var(--color-surface)] shadow-[0_3px_10px_rgba(0,0,0,0.3)] backdrop-blur-md"
+  >
+    <ul>
+      {TEMAS.map((tema) => (
+        <li class="opcion-tema px-2 py-1.5 cursor-default rounded-sm hover:bg-[var(--color-overlay)]">
+          {tema}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  #menu-temas.open {
+    display: inline;
+    animation: escalar 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes escalar {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  type PreferenciaTema = 'dark' | 'light' | 'system';
+
+  const CLAVE = 'tema';
+  const mediaOscuro = window.matchMedia('(prefers-color-scheme: dark)');
+  const menuTemas = document.getElementById('menu-temas') as HTMLDivElement;
+
+  function obtenerPreferencia(): PreferenciaTema {
+    if (typeof localStorage !== 'undefined') {
+      return (localStorage.getItem(CLAVE) as PreferenciaTema) ?? 'system';
+    }
+    return mediaOscuro.matches ? 'dark' : 'light';
+  }
+
+  function actualizarIcono(preferencia: PreferenciaTema): void {
+    document.querySelectorAll<HTMLElement>('.icono-tema').forEach((el) => {
+      el.style.scale = el.id === `icono-${preferencia}` ? '1' : '0';
+    });
+  }
+
+  function actualizarTema(): void {
+    const preferencia = obtenerPreferencia();
+    const esClaro =
+      preferencia === 'light' ||
+      (preferencia === 'system' && !mediaOscuro.matches);
+
+    actualizarIcono(preferencia);
+    document.documentElement.classList.toggle('light', esClaro);
+  }
+
+  actualizarTema();
+  mediaOscuro.addEventListener('change', actualizarTema);
+
+  document.addEventListener('click', () => menuTemas.classList.remove('open'));
+
+  document.getElementById('boton-tema')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuTemas.classList.toggle('open', !menuTemas.classList.contains('open'));
+  });
+
+  document.querySelectorAll<HTMLLIElement>('.opcion-tema').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const texto = (e.target as HTMLElement).innerText.toLowerCase().trim() as PreferenciaTema;
+      localStorage.setItem(CLAVE, texto);
+      actualizarTema();
+    });
+  });
+</script>
