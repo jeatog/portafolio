@@ -63,6 +63,19 @@ export const textos = {
   },
   proyectos: {
     titulo: 'Proyectos',
+    codigo: 'Código',
+    preview: 'Preview',
+    items: [
+      {
+        titulo: 'Traxo',
+        descripcion:
+          'Aplicación web para rastrear transferencias SPEI. Scraping de Banxico, OCR de comprobantes con EasyOCR y fallback a Claude Vision. Protegida con Cloudflare WAF (acceso solo desde México) y Turnstile anti-bot.',
+        imagen: '/projects/traxo.webp',
+        tags: ['Angular', 'Spring Boot', 'FastAPI', 'PostgreSQL', 'Docker'],
+        github: 'https://github.com/jeatog/traxo',
+        enlace: 'https://traxo.mx',
+      },
+    ],
   },
   educacion: {
     titulo: 'Educación',
