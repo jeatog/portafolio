@@ -10,22 +10,35 @@ export const textos = {
   },
   navegacion: {
     inicio: 'Inicio',
-    sobreMi: 'Sobre mí',
     stack: 'Stack',
+    experiencia: 'Experiencia',
     proyectos: 'Proyectos',
+    educacion: 'Educación',
+    contacto: 'Contáctame',
   },
   hero: {
     nombre: 'Jesús A. Toledo',
     rol: 'Desarrollador de Software',
+    tagline: 'Construyo aplicaciones web y transformo sistemas heredados en soluciones modernas',
+    ctaProyectos: 'Ver proyectos',
+    ctaContacto: 'Contáctame',
   },
-  sobreMi: {
-    titulo: 'Sobre mí',
+  sociales: {
+    github: 'https://github.com/jeatog',
+    linkedin: 'https://www.linkedin.com/in/jeatog/',
+    correo: 'contacto@jeatog.dev',
+  },
+  experiencia: {
+    titulo: 'Experiencia',
   },
   stack: {
     titulo: 'Tech Stack',
   },
   proyectos: {
     titulo: 'Proyectos',
+  },
+  educacion: {
+    titulo: 'Educación',
   },
   error404: {
     titulo: '404 - Página no encontrada',
