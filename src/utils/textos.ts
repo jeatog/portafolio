@@ -30,6 +30,37 @@ export const textos = {
   },
   experiencia: {
     titulo: 'Experiencia',
+    saberMas: 'Saber más',
+    items: [
+      {
+        fecha: 'Enero 2026 - Actualidad',
+        puesto: 'Desarrollador líder de back-end',
+        empresa: 'SmartKode Consultores',
+        descripcion:
+          'Diseño e implementación de plataforma SSO con Auth0, integración con edX Enterprise y servicios backend en Java (Spring Boot). Diseño de base de datos desde cero y liderazgo técnico del proyecto.',
+      },
+      {
+        fecha: 'Agosto 2025 - Enero 2026',
+        puesto: 'Desarrollador Java Líder',
+        empresa: 'SmartKode Consultores',
+        descripcion:
+          'Migración de aplicación standalone de Java 8 a Java 21, de Ant a Maven. Adaptación de librerías legacy, optimización de rendimiento y rediseño de UI JavaFX. Coordinación de equipo de desarrollo.',
+      },
+      {
+        fecha: 'Febrero 2024 - Diciembre 2025',
+        puesto: 'Desarrollador web',
+        empresa: 'SmartKode Consultores',
+        descripcion:
+          'Desarrollo fullstack en múltiples proyectos con Java, Spring Boot, JSF y bases de datos Oracle/PostgreSQL/MySQL. Integración de APIs REST y SOAP, despliegues en Google Cloud y Oracle Cloud. Integración de Gemini AI para análisis automático de comprobantes.',
+      },
+      {
+        fecha: 'Julio 2022 - Abril 2023',
+        puesto: 'Desarrollador web (Prácticas)',
+        empresa: 'SmartKode Consultores',
+        descripcion:
+          'Desarrollo fullstack con JSF, Spring y Oracle SQL para aseguradora automotriz. Portal administrativo con React, Bootstrap y Firebase. Inicio de carrera profesional.',
+      },
+    ],
   },
   stack: {
     titulo: 'Tech Stack',

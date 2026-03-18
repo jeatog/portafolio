@@ -1,0 +1,43 @@
+---
+interface Props {
+  fecha: string;
+  puesto: string;
+  empresa: string;
+  descripcion: string;
+  enlace?: string;
+}
+
+const { fecha, puesto, empresa, descripcion, enlace } = Astro.props;
+
+import { textos } from '@/utils/textos';
+---
+
+<div
+  class="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-[var(--color-highlight-high)] before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4"
+>
+  <div class="relative pb-12 md:col-span-2">
+    <div class="sticky top-0">
+      <div class="absolute -left-[40px] top-1.5 size-3 rounded-full border-2 border-[var(--color-iris)] bg-[var(--color-base)]"></div>
+      <h3 class="text-xl font-bold text-[var(--color-iris)]">{puesto}</h3>
+      <h4 class="text-xl font-semibold">{empresa}</h4>
+      <time class="text-sm text-[var(--color-muted)]">{fecha}</time>
+    </div>
+  </div>
+  <div class="relative flex flex-col gap-2 pb-4 text-[var(--color-subtle)] md:col-span-3">
+    {descripcion}
+    {enlace && (
+      <a
+        href={enlace}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 text-[var(--color-foam)] hover:text-[var(--color-iris)] transition-colors"
+      >
+        {textos.experiencia.saberMas}
+        <svg class="size-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M9 6l6 6l-6 6"></path>
+        </svg>
+      </a>
+    )}
+  </div>
+</div>
