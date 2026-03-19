@@ -3,5 +3,29 @@ import { textos } from '@/utils/textos';
 ---
 
 <section id="educacion">
-  <h2>{textos.educacion.titulo}</h2>
+  <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-3">
+    <svg class="size-7" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" />
+      <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" />
+    </svg>
+    {textos.educacion.titulo}
+  </h2>
+  <div class="flex flex-col gap-6">
+    {textos.educacion.items.map((item) => (
+      <article class="flex items-center gap-5 rounded-xl border border-[var(--color-highlight-med)] bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-highlight-high)]">
+        <img
+          src={item.logo}
+          alt={item.institucion}
+          class="size-16 shrink-0 rounded-lg bg-white p-1.5 object-contain"
+          loading="lazy"
+        />
+        <div>
+          <h3 class="text-lg font-bold text-[var(--color-rose)]">{item.carrera}</h3>
+          <p class="text-[var(--color-text)]">{item.institucion}</p>
+          <time class="text-sm text-[var(--color-muted)]">{item.periodo}</time>
+        </div>
+      </article>
+    ))}
+  </div>
 </section>

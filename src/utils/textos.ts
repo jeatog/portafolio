@@ -4,9 +4,9 @@
 
 export const textos = {
   sitio: {
-    titulo: 'Portfolio - Desarrollador de Software',
+    titulo: 'Jesús A. Toledo',
     descripcion:
-      'Portfolio personal. Desarrollador de Software especializado en backend, infraestructura y aplicaciones web.',
+      'Porfolio personal. Desarrollador de Software especializado en backend, infraestructura y aplicaciones web.',
   },
   navegacion: {
     inicio: 'Inicio',
@@ -85,6 +85,14 @@ export const textos = {
   },
   educacion: {
     titulo: 'Educación',
+    items: [
+      {
+        institucion: 'Benemérita Universidad Autónoma de Puebla',
+        carrera: 'Lic. Ingeniería en Ciencias de la Computación',
+        periodo: '2017 - 2022',
+        logo: '/icons/buap.svg',
+      },
+    ],
   },
   error404: {
     titulo: '404 - Página no encontrada',
