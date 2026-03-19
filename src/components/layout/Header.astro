@@ -14,7 +14,7 @@ import Nav from './Nav.astro';
     entradas.forEach((entrada) => {
       if (entrada.isIntersecting) {
         elementosNav.forEach((el) => {
-          const esActivo = el.getAttribute('aria-label') === entrada.target.id;
+          const esActivo = el.getAttribute('data-seccion') === entrada.target.id;
           (el as HTMLElement).style.color = esActivo
             ? 'var(--color-gold)'
             : '';
