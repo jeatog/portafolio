@@ -10,6 +10,16 @@ import { textos } from '@/utils/textos';
     <div class="logo-hero h-full w-full"></div>
   </div>
   <div class="relative max-w-2xl space-y-6">
+    <div class="relative mx-auto size-24">
+      <span class="absolute inset-[-4px] rounded-full animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,var(--color-foam)_0%,var(--color-overlay)_50%,var(--color-foam)_100%)]"></span>
+      <img
+        src="/foto.png"
+        alt={textos.hero.nombre}
+        class="relative size-24 rounded-full object-cover"
+        width="96"
+        height="96"
+      />
+    </div>
     <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
       {textos.hero.nombre}
     </h1>
