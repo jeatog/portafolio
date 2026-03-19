@@ -1,0 +1,66 @@
+---
+/**
+ * Marquee infinito de iconos de tecnologias.
+ * Para agregar tecnologias, solo se necesita agregar su SVG en public/icons/stack/.
+ */
+
+const iconos = Object.entries(
+  import.meta.glob('/public/icons/stack/*.svg', { query: '?url', import: 'default', eager: true })
+).map(([ruta, url]) => ({
+  nombre: ruta.split('/').pop()?.replace('.svg', '') ?? '',
+  url: url as string,
+}));
+---
+
+{iconos.length > 0 && (
+  <div class="marquee-contenedor relative w-full overflow-hidden py-6" aria-hidden="true">
+    <div class="marquee-pista flex w-max items-center gap-16">
+      {[...iconos, ...iconos].map((icono) => (
+        <img
+          src={icono.url}
+          alt=""
+          class="h-7 w-20 shrink-0 object-contain opacity-40"
+          loading="lazy"
+        />
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .marquee-contenedor {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  .marquee-pista {
+    animation: desplazar 40s linear infinite;
+  }
+
+  @keyframes desplazar {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-pista {
+      animation: none;
+    }
+  }
+</style>
