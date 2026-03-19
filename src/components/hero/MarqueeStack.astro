@@ -13,7 +13,7 @@ const iconos = Object.entries(
 ---
 
 {iconos.length > 0 && (
-  <div class="marquee-contenedor relative w-full overflow-hidden py-6" aria-hidden="true">
+  <div class="marquee-contenedor relative w-screen max-w-full overflow-hidden py-6" aria-hidden="true">
     <div class="marquee-pista flex w-max items-center gap-16">
       {[...iconos, ...iconos].map((icono) => (
         <img
