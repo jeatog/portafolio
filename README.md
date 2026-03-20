@@ -4,12 +4,11 @@ Portfolio personal. Sitio estático construido con Astro, Tailwind CSS y la pale
 
 **URL:** [jeatog.dev](https://jeatog.dev)
 
-## Stack
-
-- Astro 5
-- Tailwind CSS 4
-- TypeScript
-- GitHub Pages + GitHub Actions
+[![Astro](https://img.shields.io/badge/Astro-6-BC52EE?logo=astro&logoColor=white)](https://astro.build)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-deploy-222222?logo=githubpages&logoColor=white)](https://jeatog.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 ## Desarrollo local
 
