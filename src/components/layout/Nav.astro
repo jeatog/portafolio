@@ -1,12 +1,13 @@
 ---
 import { textos } from '@/utils/textos';
 import ToggleTema from './ToggleTema.astro';
+import ToggleIdioma from './ToggleIdioma.astro';
 
 const elementosNav = [
-  { titulo: textos.navegacion.experiencia, etiqueta: 'experiencia', url: '#experiencia' },
-  { titulo: textos.navegacion.proyectos, etiqueta: 'proyectos', url: '#proyectos' },
-  { titulo: textos.navegacion.educacion, etiqueta: 'educacion', url: '#educacion' },
-  { titulo: textos.navegacion.contacto, etiqueta: 'contacto', url: `mailto:${textos.sociales.correo}` },
+  { titulo: textos.navegacion.experiencia, etiqueta: 'experiencia', url: '#experiencia', i18n: 'nav.experiencia' },
+  { titulo: textos.navegacion.proyectos, etiqueta: 'proyectos', url: '#proyectos', i18n: 'nav.proyectos' },
+  { titulo: textos.navegacion.educacion, etiqueta: 'educacion', url: '#educacion', i18n: 'nav.educacion' },
+  { titulo: textos.navegacion.contacto, etiqueta: 'contacto', url: `mailto:${textos.sociales.correo}`, i18n: 'nav.contacto' },
 ];
 ---
 
@@ -15,12 +16,14 @@ const elementosNav = [
     <a
       class="relative block px-1.5 py-2 sm:px-2 transition hover:text-[var(--color-gold)]"
       data-seccion={enlace.etiqueta}
+      data-i18n={enlace.i18n}
       href={enlace.url}
     >
       {enlace.titulo}
     </a>
   ))}
   <ToggleTema />
+  <ToggleIdioma />
 </nav>
 
 <style>

@@ -1,0 +1,56 @@
+---
+import { en } from '@/i18n/en';
+---
+
+<button
+  id="boton-idioma"
+  class="appearance-none border-none flex hover:scale-125 transition ml-1"
+  aria-label="Cambiar idioma"
+>
+  <svg class="size-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/>
+    <path d="M3.6 9h16.8"/>
+    <path d="M3.6 15h16.8"/>
+    <path d="M11.5 3a17 17 0 0 0 0 18"/>
+    <path d="M12.5 3a17 17 0 0 1 0 18"/>
+  </svg>
+</button>
+
+<script is:inline define:vars={{ en }}>
+  window.__i18n_en = en;
+</script>
+
+<script>
+  const CLAVE = 'idioma';
+
+  function obtenerIdioma(): string {
+    return localStorage.getItem(CLAVE) || 'es';
+  }
+
+  function aplicarIdioma(): void {
+    const idioma = obtenerIdioma();
+    document.documentElement.lang = idioma;
+
+    document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+      if (!el.dataset.i18nEs) {
+        el.dataset.i18nEs = el.textContent || '';
+      }
+      const clave = el.dataset.i18n!;
+      if (idioma === 'en') {
+        const traduccion = (window as any).__i18n_en?.[clave];
+        if (traduccion) el.textContent = traduccion;
+      } else {
+        el.textContent = el.dataset.i18nEs;
+      }
+    });
+  }
+
+  aplicarIdioma();
+
+  document.getElementById('boton-idioma')?.addEventListener('click', () => {
+    const nuevo = obtenerIdioma() === 'es' ? 'en' : 'es';
+    localStorage.setItem(CLAVE, nuevo);
+    aplicarIdioma();
+  });
+</script>

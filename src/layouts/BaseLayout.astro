@@ -54,12 +54,16 @@ const canonica = urlCanonica || Astro.url.href;
     <meta name="theme-color" content="#faf4ed" media="(prefers-color-scheme: light)" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Anti-FOUC: aplicar tema antes del primer render -->
+    <!-- Anti-FOUC: aplicar tema e idioma antes del primer render -->
     <script is:inline>
       (function() {
         var tema = localStorage.getItem('tema');
         if (tema === 'light' || (!tema && window.matchMedia('(prefers-color-scheme: light)').matches)) {
           document.documentElement.classList.add('light');
+        }
+        var idioma = localStorage.getItem('idioma');
+        if (idioma) {
+          document.documentElement.lang = idioma;
         }
       })();
     </script>

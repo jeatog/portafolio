@@ -11,11 +11,11 @@ import ProyectoCard from './ProyectoCard.astro';
       <path d="M17 8l4 4l-4 4"></path>
       <path d="M14 4l-4 16"></path>
     </svg>
-    {textos.proyectos.titulo}
+    <span data-i18n="proyectos.titulo">{textos.proyectos.titulo}</span>
   </h2>
   <div class="flex flex-col gap-y-16">
-    {textos.proyectos.items.map((proyecto) => (
-      <ProyectoCard {...proyecto} />
+    {textos.proyectos.items.map((proyecto, i) => (
+      <ProyectoCard {...proyecto} indice={i} />
     ))}
   </div>
 </section>

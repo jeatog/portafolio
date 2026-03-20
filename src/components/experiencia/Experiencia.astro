@@ -12,12 +12,12 @@ import ExperienciaItem from './ExperienciaItem.astro';
       <path d="M12 12l0 .01"></path>
       <path d="M3 13a20 20 0 0 0 18 0"></path>
     </svg>
-    {textos.experiencia.titulo}
+    <span data-i18n="experiencia.titulo">{textos.experiencia.titulo}</span>
   </h2>
   <ol class="relative mt-16">
-    {textos.experiencia.items.map((exp) => (
+    {textos.experiencia.items.map((exp, i) => (
       <li>
-        <ExperienciaItem {...exp} />
+        <ExperienciaItem {...exp} indice={i} />
       </li>
     ))}
   </ol>

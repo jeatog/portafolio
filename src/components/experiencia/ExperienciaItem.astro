@@ -5,9 +5,10 @@ interface Props {
   empresa: string;
   descripcion: string;
   enlace?: string;
+  indice: number;
 }
 
-const { fecha, puesto, empresa, descripcion, enlace } = Astro.props;
+const { fecha, puesto, empresa, descripcion, enlace, indice } = Astro.props;
 
 import { textos } from '@/utils/textos';
 ---
@@ -18,13 +19,13 @@ import { textos } from '@/utils/textos';
   <div class="relative pb-12 md:col-span-2">
     <div class="sticky top-0">
       <div class="absolute -left-[40px] top-1.5 size-3 rounded-full border-2 border-[var(--color-iris)] bg-[var(--color-base)]"></div>
-      <h3 class="text-xl font-bold text-[var(--color-iris)]">{puesto}</h3>
+      <h3 class="text-xl font-bold text-[var(--color-iris)]" data-i18n={`exp.${indice}.puesto`}>{puesto}</h3>
       <h4 class="text-xl font-semibold">{empresa}</h4>
-      <time class="text-sm text-[var(--color-subtle)]">{fecha}</time>
+      <time class="text-sm text-[var(--color-subtle)]" data-i18n={`exp.${indice}.fecha`}>{fecha}</time>
     </div>
   </div>
   <div class="relative flex flex-col gap-2 pb-4 text-[var(--color-subtle)] md:col-span-3">
-    {descripcion}
+    <span data-i18n={`exp.${indice}.descripcion`}>{descripcion}</span>
     {enlace && (
       <a
         href={enlace}
@@ -32,7 +33,7 @@ import { textos } from '@/utils/textos';
         rel="noopener noreferrer"
         class="inline-flex items-center gap-1 text-[var(--color-foam)] hover:text-[var(--color-iris)] transition-colors"
       >
-        {textos.experiencia.saberMas}
+        <span data-i18n="experiencia.saberMas">{textos.experiencia.saberMas}</span>
         <svg class="size-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M9 6l6 6l-6 6"></path>

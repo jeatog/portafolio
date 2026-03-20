@@ -41,7 +41,7 @@ const opciones = [
   >
     <ul>
       {opciones.map((opcion) => (
-        <li class="opcion-tema px-2 py-1.5 cursor-default rounded-sm hover:bg-[var(--color-overlay)]" data-valor={opcion.valor}>
+        <li class="opcion-tema px-2 py-1.5 cursor-default rounded-sm hover:bg-[var(--color-overlay)]" data-valor={opcion.valor} data-i18n={`tema.${opcion.valor === 'light' ? 'claro' : opcion.valor === 'dark' ? 'oscuro' : 'sistema'}`}>
           {opcion.etiqueta}
         </li>
       ))}

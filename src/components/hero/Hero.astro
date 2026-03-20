@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import foto from '@/assets/foto.png';
 import { textos } from '@/utils/textos';
+import { Image } from 'astro:assets';
 import MarqueeStack from './MarqueeStack.astro';
 ---
 
@@ -20,16 +20,17 @@ import MarqueeStack from './MarqueeStack.astro';
         alt={textos.hero.nombre}
         width={96}
         height={96}
+        loading="eager"
         class="relative size-24 rounded-full object-cover"
       />
     </div>
     <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
       {textos.hero.nombre}
     </h1>
-    <p class="text-xl font-semibold text-[var(--color-iris)] sm:text-2xl">
+    <p class="text-xl font-semibold text-[var(--color-iris)] sm:text-2xl" data-i18n="hero.rol">
       {textos.hero.rol}
     </p>
-    <p class="text-lg text-[var(--color-subtle)] sm:text-xl">
+    <p class="text-lg text-[var(--color-subtle)] sm:text-xl" data-i18n="hero.tagline">
       {textos.hero.tagline}
     </p>
 
@@ -46,7 +47,7 @@ import MarqueeStack from './MarqueeStack.astro';
           <path d="M17 8l4 4l-4 4"></path>
           <path d="M14 4l-4 16"></path>
         </svg>
-        {textos.hero.ctaProyectos}
+        <span data-i18n="hero.ctaProyectos">{textos.hero.ctaProyectos}</span>
       </a>
       <a
         href={`mailto:${textos.sociales.correo}`}
@@ -59,7 +60,7 @@ import MarqueeStack from './MarqueeStack.astro';
           <path d="M15 18h6"></path>
           <path d="M18 15l3 3l-3 3"></path>
         </svg>
-        {textos.hero.ctaContacto}
+        <span data-i18n="hero.ctaContacto">{textos.hero.ctaContacto}</span>
       </a>
     </div>
 
